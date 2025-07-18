@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/TareaFormulario.css';
-import {  v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4} from 'uuid';
 
 function TareaFormulario(props) {
 
@@ -18,8 +18,13 @@ function TareaFormulario(props) {
             texto: input,
             completada: false,
         }
-
-        props.onSubmit(tareaNueva);
+        if (input === '') {
+            alert('Por favor, escribe una tarea');
+            return;
+        } else {
+            props.onSubmit(tareaNueva);
+        }
+        setInput('');
     };
 
     return(
@@ -31,6 +36,7 @@ function TareaFormulario(props) {
                 type='text'
                 placeholder='Escribe una tarea'
                 name='texto'
+                value={input} // Vincula el valor del input al estado
                 onChange={manejarCambio}
             />
             <button className='tarea-boton'>

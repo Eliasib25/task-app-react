@@ -9,6 +9,7 @@ function Tarea({ id, texto, completada, completarTarea, eliminarTarea }) {
                 className='tarea-texto'
                 onClick={() => completarTarea(id)}>
                 {texto}
+                {console.log(completada)}
             </div>
             <div 
                 className='tarea-contenedor-iconos'
